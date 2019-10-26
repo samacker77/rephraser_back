@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://use.fontawesome.com/e7830036f6.js"></script>
+
+	<title>Scanta | Text Rephrasing Engine</title>
+	<link rel="shortcut icon" type="image/png" href="http://scanta.io/wp-content/uploads/2019/10/512x512bb.jpg"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.js" integrity="sha256-xp3mHur7sqosKiJ81IZiZ0SyjjeMt0H0evjXzEzlwBI=" crossorigin="anonymous"></script>
+	<style type="text/css">
+
+
+
+    input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  -webkit-appearance: none;
+  display: block;
+  background: #fafafa;
+  color: #636363;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #757575;
+}
+
+input:focus { outline: none; }
+
+
+/* Label */
+
+label {
+  color: #999; 
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: all 0.2s ease;
+}
+
+
+/* active */
+
+input:focus ~ label, input.used ~ label {
+  top: -20px;
+  transform: scale(.75); left: -2px;
+  /* font-size: 14px; */
+  color: #4a89dc;
+}
+
+
+/* Underline */
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar:before, .bar:after {
+  content: '';
+  height: 2px; 
+  width: 0;
+  bottom: 1px; 
+  position: absolute;
+  background: #4a89dc; 
+  transition: all 0.2s ease;
+}
+
+.bar:before { left: 50%; }
+
+.bar:after { right: 50%; }
+
+
+/* active */
+
+input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
+
+
+/* Highlight */
+
+.highlight {
+  position: absolute;
+  height: 60%; 
+  width: 100px; 
+  top: 25%; 
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+
+/* active */
+
+input:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+
+/* Animations */
+
+@keyframes inputHighlighter {
+  from { background: #4a89dc; }
+  to  { width: 0; background: transparent; }
+}
+
+				* { box-sizing:border-box; }
+
+        hgroup { 
+  text-align:center;
+  margin-top: 4em;
+}
+
+h1, h3 { font-weight: 400; }
+
+h1 { color: #636363; }
+
+h3 { color: #4a89dc; }
+
+body {
+	font-family: Helvetica;
+	background: #eee;
+  margin-top: 2px;
+  -webkit-font-smoothing: antialiased;
+}
+footer { text-align: center; }
+
+footer p {
+	color: #888;
+	font-size: 13px;
+	letter-spacing: .4px;
+}
+
+footer a {
+	color: #4a89dc;
+	text-decoration: none;
+	transition: all .2s ease;
+}
+
+footer a:hover {
+	color: #666;
+	text-decoration: underline;
+}
+
+footer img {
+	width: 150px;
+	transition: all .2s ease;
+}
+
+footer img:hover { opacity: .83; }
+
+footer img:focus , footer a:focus { outline: none; }
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 1.3em 1em 1.5em 2.9em;
+  width: 70%;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  letter-spacing: 1px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid blue;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.button:focus { outline: 0; }
+
+
+/* Button modifiers */
+
+.buttonBlue {
+  background: #ea5703;
+  text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
+}
+
+.buttonBlue:hover { background: #357bd8; }
+
+
+
+.container {
+	width: 500px;
+	margin: 4em auto;
+	padding: 3em 2em 2em 2em;
+	background: #fafafa;
+	border: 1px solid #ebebeb;
+	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+	</style>
+</head>
+<body>
+  <footer><a href="http://scanta.io" target="_blank"><img src="http://scanta.io/wp-content/uploads/2019/10/imggg.png" width="50px"></a>
+  <p>Humanizing Machine interactions <br><a href="http://scanta.io" target="_blank">scanta.io</a></p>
+</footer>
+  <hgroup>
+  <h1 style="font-size: 25px;">Text Rephraser | <span style="color: #ea5703">Demo V1</span></h1>
+  <div style="max-width: 620px;text-align: center;margin-left: auto;margin-right: auto;line-height: 1.5em;font-size: 20px;">
+  <p style="font-size:15px;">Current development enviroment requires the developer to put in multiple training phrases having same meaning. Scanta aims to automate that by generating multiple training phrases using just 1 single text.</p>
+  <i class="fas fa-arrow-alt-circle-left"></i>
+    
+  </button>
+</div>
+
+</div>
+<hr width="70%">
+<br>
+<p style="text-align: center;font-weight: bold;"><span style="color: #ea5703">Original Text</span> - {{prediction[0]}}</p>
+  
+<div class="modal-body row" style="margin-top: 12px">
+  <div class="col-md-6">
+    <div class="container">
+  <div class="card" style="width: 25rem;">
+  <ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <span style="text-align: center;">Manually adding multiple phrases with same meaning</span>
+  </li>
+  <ul class="list-group list-group-flush">
+
+  	
+
+    <li class="list-group-item">
+      <div class="group">
+    <input type="text" name="nlg" placeholder="Add training phrase"><span class="highlight"></span><span class="bar"></span>
+    <!--<label>Input your text</label>-->
+  </div>
+    </li> 
+    <li class="list-group-item">
+      <div class="group">
+    <input type="text" name="nlg" placeholder="Add training phrase"><span class="highlight"></span><span class="bar"></span>
+    <!--<label>Input your text</label>-->
+  </div>
+    </li> 
+    <li class="list-group-item">
+      <div class="group">
+    <input type="text" name="nlg" placeholder="Add training phrase"><span class="highlight"></span><span class="bar"></span>
+    <!--<label>Input your text</label>-->
+  </div>
+    </li> 
+    <li class="list-group-item">
+      <div class="group">
+    <input type="text" name="nlg" placeholder="Add training phrase"><span class="highlight"></span><span class="bar"></span>
+    <!--<label>Input your text</label>-->
+  </div>
+    </li> 
+    <li class="list-group-item">
+      <div class="group">
+    <input type="text" name="nlg" placeholder="Add training phrase"><span class="highlight"></span><span class="bar"></span>
+    <!--<label>Input your text</label>-->
+  </div>
+    </li> 
+</th>
+  </ul>
+</div>
+</div>
+  </div>
+  <div class="col-md-6">
+    <div class="container">
+  <div class="card" style="width: 25rem;">
+  <ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <span style="text-align: center;">Training phrases generated by Scanta's rephraser engine</span>
+    <span class="badge badge-primary badge-pill" data-toggle="tooltip" data-placement="top" title="Tooltip on top">{{prediction[2]}}</span>
+  </li>
+  <ul class="list-group list-group-flush">
+
+  	<th>{%for i in your_list%} 
+
+    <li class="list-group-item"><span style="font-weight: lighter;">{{i}}</span></li> 
+{%endfor%} </th>
+  </ul>
+</div>
+  
+</div>
+  </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
